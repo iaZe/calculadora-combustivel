@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, StyleSheet, Keyboard, TouchableWithoutFeedback } from 'react-native';
+import { View, Text, TextInput, Image, StyleSheet, Keyboard, TouchableWithoutFeedback } from 'react-native';
 
 export default function App() {
   const [gasolina, setGasolina] = useState('');
@@ -31,6 +31,14 @@ export default function App() {
       <View style={styles.container}>
         <Text style={styles.title}>Calculadora de Combustível</Text>
 
+        <View style={styles.logoContainer}>
+          <Image
+            source={require('../../assets/logo.png')}
+            style={styles.logo}
+            resizeMode="contain"
+          />
+        </View>
+
         <TextInput
           style={styles.input}
           placeholder="Preço da Gasolina"
@@ -38,6 +46,7 @@ export default function App() {
           value={gasolina}
           onChangeText={setGasolina}
         />
+
         <TextInput
           style={styles.input}
           placeholder="Preço do Etanol"
@@ -45,6 +54,7 @@ export default function App() {
           value={etanol}
           onChangeText={setEtanol}
         />
+
         <View style={styles.button} onTouchEnd={calcular}>
           <Text style={styles.buttonText}>Calcular</Text>
         </View>
@@ -61,6 +71,14 @@ const styles = StyleSheet.create({
     padding: 24,
     justifyContent: 'center',
     backgroundColor: '#f2f2f5',
+  },
+  logo: {
+    height: 80,
+    marginBottom: 24,
+  },
+  logoContainer: {
+    alignItems: 'center',
+    marginBottom: 24,
   },
   title: {
     fontSize: 24,
